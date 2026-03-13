@@ -3,3 +3,14 @@ ref_sources/
 extra_sources/
 fraud-detection-ds/
 credit_card_fraud_detection.ipynb
+ref.pptx
+ref.txt
+questions.txt
+heart_backup.csv
+heart_clean.csv
+info.md
+presentation.md
+forppt.md
+struct_ppt.md
+__pycache__/
+.ipynb_checkpoints/
