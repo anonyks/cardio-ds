@@ -25,11 +25,11 @@ a **model** is basically a math function that takes input data and spits out a p
 ### parameters vs hyperparameters
 
 - **parameters** = values the model learns during training (like weights and biases). cant be set manually.
-- **hyperparameters** = values set BEFORE training (like learning rate, number of layers, C in logistic regression). the model doesnt learn these — they come from the human or from tuning.
+- **hyperparameters** = values set BEFORE training (like learning rate, number of layers, C in logistic regression). the model doesnt learn these -- they come from the human or from tuning.
 
 ### what is a DataFrame
 
-a **DataFrame** (from pandas) is a 2D table of data with labeled rows and columns — basically an excel spreadsheet in python. each column can have a different data type. most data science work in python revolves around manipulating DataFrames.
+a **DataFrame** (from pandas) is a 2D table of data with labeled rows and columns -- basically an excel spreadsheet in python. each column can have a different data type. most data science work in python revolves around manipulating DataFrames.
 
 ---
 
@@ -70,7 +70,7 @@ import seaborn as sns
 
 ### sklearn (scikit-learn)
 
-THE machine learning library for python. has literally everything — splitting data, scaling, models, metrics, tuning. a bunch of stuff got imported from it:
+THE machine learning library for python. has literally everything -- splitting data, scaling, models, metrics, tuning. a bunch of stuff got imported from it:
 
 ```python
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -113,7 +113,7 @@ df = pd.read_csv('heart.csv')
 
 ### `df.shape`
 
-gives the dimensions of the dataframe as (rows, columns). so like `(303, 14)` means 303 patients and 14 columns. no parentheses after shape btw — its a property not a method.
+gives the dimensions of the dataframe as (rows, columns). so like `(303, 14)` means 303 patients and 14 columns. no parentheses after shape btw -- its a property not a method.
 
 ```python
 print(df.shape)
@@ -150,8 +150,8 @@ df['target'].value_counts()
 ### missing values / `dropna()`
 
 sometimes datasets have empty cells (**NaN** = Not a Number). models cant handle those so they need to be dealt with. options:
-- **drop them** (`dropna()`) — just remove rows with missing values. easy but data gets lost.
-- **fill them** (`fillna()`) — replace with mean, median, mode, or some other value. not needed here.
+- **drop them** (`dropna()`) -- just remove rows with missing values. easy but data gets lost.
+- **fill them** (`fillna()`) -- replace with mean, median, mode, or some other value. not needed here.
 
 **NaN** stands for "Not a Number." its pythons way of saying "this cell is empty / missing." numpy and pandas both recognize it. can check for it with `df.isnull()` or `pd.isna()`.
 
@@ -170,11 +170,11 @@ in this case it dropped 1 row. not a big deal.
 
 ## 4. EDA (Exploratory Data Analysis)
 
-fancy name for "looking at the data before doing anything with it." the goal is to understand whats going on — are there outliers? are the classes balanced? which features seem related to the target? etc.
+fancy name for "looking at the data before doing anything with it." the goal is to understand whats going on -- are there outliers? are the classes balanced? which features seem related to the target? etc.
 
 ### `df.describe()`
 
-gives basic stats for each numeric column: count, mean, std (standard deviation), min, max, and the quartiles (25%, 50%, 75%). the 50% is the **median** (middle value). helps spot weird stuff like if the max cholesterol is 564 — thats pretty high.
+gives basic stats for each numeric column: count, mean, std (standard deviation), min, max, and the quartiles (25%, 50%, 75%). the 50% is the **median** (middle value). helps spot weird stuff like if the max cholesterol is 564 -- thats pretty high.
 
 ```python
 df.describe()
@@ -190,7 +190,7 @@ just add up all the values and divide by how many there are. problem: gets pulle
 
 **median:**
 
-the middle value when all values are sorted. if theres an even number of values, its the average of the two middle ones. not affected by outliers — thats why its sometimes better than mean.
+the middle value when all values are sorted. if theres an even number of values, its the average of the two middle ones. not affected by outliers -- thats why its sometimes better than mean.
 
 example: [1, 2, 3, 100] → mean = 26.5, median = 2.5. median is more representative here.
 
@@ -207,7 +207,7 @@ the thing inside the square root is called **variance** ($\sigma^2$). std is jus
 - **25th percentile (Q1)** = 25% of values are below this
 - **50th percentile (Q2)** = the median
 - **75th percentile (Q3)** = 75% of values are below this
-- **IQR (Interquartile Range)** = Q3 - Q1. measures the spread of the middle 50% of data. used to detect outliers — anything below Q1 - 1.5×IQR or above Q3 + 1.5×IQR is often considered an outlier.
+- **IQR (Interquartile Range)** = Q3 - Q1. measures the spread of the middle 50% of data. used to detect outliers -- anything below Q1 - 1.5×IQR or above Q3 + 1.5×IQR is often considered an outlier.
 
 ### bar plot (target distribution)
 
@@ -248,10 +248,10 @@ plt.savefig('obtained_fig/correlation_heatmap.png', bbox_inches='tight')
 plt.show()
 ```
 
-- `annot=True` — shows the actual numbers on each cell
-- `cmap='coolwarm'` — the color scheme (red/blue)
-- `fmt='.1f'` — format numbers to 1 decimal place
-- `figsize=(10, 8)` — makes the plot bigger so its readable
+- `annot=True` -- shows the actual numbers on each cell
+- `cmap='coolwarm'` -- the color scheme (red/blue)
+- `fmt='.1f'` -- format numbers to 1 decimal place
+- `figsize=(10, 8)` -- makes the plot bigger so its readable
 
 ---
 
@@ -270,10 +270,10 @@ y = df['target']               # just the target column
 
 ### train/test split
 
-NEVER train and test on the same data. thats like giving students the exam answers and then testing them on the same questions — obviously they'll do well but nothing was actually learned. so the data gets split:
+NEVER train and test on the same data. thats like giving students the exam answers and then testing them on the same questions -- obviously they'll do well but nothing was actually learned. so the data gets split:
 
-- **training set** (usually 80%) — model learns from this
-- **test set** (usually 20%) — model is evaluated on this, never seen during training
+- **training set** (usually 80%) -- model learns from this
+- **test set** (usually 20%) -- model is evaluated on this, never seen during training
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(
@@ -284,9 +284,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
-- **`test_size=0.2`** — 20% goes to test, 80% to train
-- **`random_state=42`** — a seed number. doesnt matter what number gets picked, its just so the "random" split is reproducible. 42 is a common convention
-- **`stratify=y`** — super important for classification. if the dataset has 55% disease and 45% no disease, stratify makes sure the train and test sets also have roughly 55/45. without it, the split might be unlucky and put all the disease cases in one set
+- **`test_size=0.2`** -- 20% goes to test, 80% to train
+- **`random_state=42`** -- a seed number. doesnt matter what number gets picked, its just so the "random" split is reproducible. 42 is a common convention
+- **`stratify=y`** -- super important for classification. if the dataset has 55% disease and 45% no disease, stratify makes sure the train and test sets also have roughly 55/45. without it, the split might be unlucky and put all the disease cases in one set
 
 ### StandardScaler (feature scaling / standardization)
 
@@ -309,13 +309,13 @@ X_train_scaled = scaler.fit_transform(X_train)  # learns mean/std from training 
 X_test_scaled = scaler.transform(X_test)         # uses the SAME mean/std to scale test data
 ```
 
-**IMPORTANT**: `fit_transform` is used on train and just `transform` on test. if `fit` gets called on test data too, thats **data leakage** — the model indirectly gets info about the test set, which is cheating. super common mistake.
+**IMPORTANT**: `fit_transform` is used on train and just `transform` on test. if `fit` gets called on test data too, thats **data leakage** -- the model indirectly gets info about the test set, which is cheating. super common mistake.
 
 ### normalization vs standardization
 
 people mix these up all the time:
-- **standardization** (what StandardScaler does) — shifts to mean=0, std=1. no fixed range. good when data is roughly normally distributed.
-- **normalization** (MinMaxScaler) — scales values to a fixed range like [0, 1]. formula: $x' = \frac{x - x_{min}}{x_{max} - x_{min}}$. good when the distribution isnt gaussian.
+- **standardization** (what StandardScaler does) -- shifts to mean=0, std=1. no fixed range. good when data is roughly normally distributed.
+- **normalization** (MinMaxScaler) -- scales values to a fixed range like [0, 1]. formula: $x' = \frac{x - x_{min}}{x_{max} - x_{min}}$. good when the distribution isnt gaussian.
 
 this project uses standardization.
 
@@ -348,7 +348,7 @@ the model learns the weights ($w$) and bias ($b$) during training by minimizing 
 
 #### what is the bias term ($b$)
 
-the **bias** (also called intercept) is an extra learnable number added to the weighted sum. without it, the decision boundary always has to pass through the origin (0,0). the bias lets the model shift the boundary to fit the data better. think of it like the y-intercept in $y = mx + b$ — same idea.
+the **bias** (also called intercept) is an extra learnable number added to the weighted sum. without it, the decision boundary always has to pass through the origin (0,0). the bias lets the model shift the boundary to fit the data better. think of it like the y-intercept in $y = mx + b$ -- same idea.
 
 #### euler's number ($e$)
 
@@ -393,9 +393,9 @@ adds the sum of **squared** weights. shrinks all weights towards zero but none b
 
 hyperparameters = settings chosen before training (the model doesnt learn these).
 
-- **C** — inverse regularization strength. higher C = less regularization. too high → **overfitting**. too low → **underfitting**.
-- **penalty** — type of regularization (l1 or l2, explained above)
-- **solver** — the algorithm used internally to optimize. `liblinear` works for both l1 and l2 on small datasets.
+- **C** -- inverse regularization strength. higher C = less regularization. too high → **overfitting**. too low → **underfitting**.
+- **penalty** -- type of regularization (l1 or l2, explained above)
+- **solver** -- the algorithm used internally to optimize. `liblinear` works for both l1 and l2 on small datasets.
 
 ### GridSearchCV (hyperparameter tuning)
 
@@ -466,7 +466,7 @@ $$\text{Precision} = \frac{TP}{TP + FP}$$
 
 "of all the people predicted as having heart disease, how many actually have it?"
 
-high precision = few false alarms. important when false positives are costly (like telling a healthy person they have a disease — causes unnecessary stress and tests).
+high precision = few false alarms. important when false positives are costly (like telling a healthy person they have a disease -- causes unnecessary stress and tests).
 
 ### recall (aka sensitivity / true positive rate)
 
@@ -474,7 +474,7 @@ $$\text{Recall} = \frac{TP}{TP + FN}$$
 
 "of all the people who actually have heart disease, how many did the model catch?"
 
-high recall = fewer missed sick people. super important in medical stuff — missing a person with heart disease could literally kill them.
+high recall = fewer missed sick people. super important in medical stuff -- missing a person with heart disease could literally kill them.
 
 ### precision-recall tradeoff
 
@@ -492,22 +492,22 @@ the **harmonic mean** of precision and recall. a single number that balances bot
 
 **why harmonic mean and not regular (arithmetic) mean?**
 
-arithmetic mean of precision=0.9 and recall=0.1 would be 0.5 — sounds decent. but having 0.1 recall means the model misses 90% of sick people, which is terrible. the harmonic mean gives 0.18 instead, which better reflects how bad that situation is. basically the harmonic mean punishes extreme imbalances.
+arithmetic mean of precision=0.9 and recall=0.1 would be 0.5 -- sounds decent. but having 0.1 recall means the model misses 90% of sick people, which is terrible. the harmonic mean gives 0.18 instead, which better reflects how bad that situation is. basically the harmonic mean punishes extreme imbalances.
 
 $$\text{Arithmetic mean} = \frac{a + b}{2} \quad \quad \text{Harmonic mean} = \frac{2ab}{a + b}$$
 
 ### where TP, FP, TN, FN come from
 
-- **TP (True Positive)** — model says disease, patient actually has disease ✓
-- **FP (False Positive)** — model says disease, patient is actually healthy ✗ (false alarm)
-- **TN (True Negative)** — model says healthy, patient is actually healthy ✓
-- **FN (False Negative)** — model says healthy, patient actually has disease ✗ (missed it)
+- **TP (True Positive)** -- model says disease, patient actually has disease ✓
+- **FP (False Positive)** -- model says disease, patient is actually healthy ✗ (false alarm)
+- **TN (True Negative)** -- model says healthy, patient is actually healthy ✓
+- **FN (False Negative)** -- model says healthy, patient actually has disease ✗ (missed it)
 
 ### specificity (bonus metric, not coded but good to know)
 
 $$\text{Specificity} = \frac{TN}{TN + FP}$$
 
-"of all the healthy people, how many were correctly identified as healthy?" its the opposite of recall — recall is about catching sick people, specificity is about correctly leaving healthy people alone. also called **True Negative Rate (TNR)**.
+"of all the healthy people, how many were correctly identified as healthy?" its the opposite of recall -- recall is about catching sick people, specificity is about correctly leaving healthy people alone. also called **True Negative Rate (TNR)**.
 
 ### code for all metrics
 
@@ -522,16 +522,16 @@ lr_f1 = f1_score(y_test, y_pred_lr)
 lr_auc = roc_auc_score(y_test, y_pred_lr_proba)
 ```
 
-`predict_proba(X)[:, 1]` — gives probabilities. its a 2D array where column 0 = prob of class 0, column 1 = prob of class 1. column 1 gets grabbed with `[:, 1]`.
+`predict_proba(X)[:, 1]` -- gives probabilities. its a 2D array where column 0 = prob of class 0, column 1 = prob of class 1. column 1 gets grabbed with `[:, 1]`.
 
 ### classification_report
 
 prints all the metrics in a nice formatted table. shows precision, recall, f1 for each class and also the averages.
 
 the averages section shows:
-- **macro avg** — just the plain average of each class's metric. treats both classes equally regardless of size.
-- **weighted avg** — weighted by number of samples in each class. more representative when classes are imbalanced.
-- **support** — how many samples are in each class.
+- **macro avg** -- just the plain average of each class's metric. treats both classes equally regardless of size.
+- **weighted avg** -- weighted by number of samples in each class. more representative when classes are imbalanced.
+- **support** -- how many samples are in each class.
 
 ```python
 print(classification_report(y_test, y_pred_lr))
@@ -564,8 +564,8 @@ plt.savefig('obtained_fig/lr_confusion_matrix.png', bbox_inches='tight')
 plt.show()
 ```
 
-- `fmt='d'` — format as integers (whole numbers)
-- `cmap='Blues'` — blue color scheme. `'Greens'` was used for the ANN one
+- `fmt='d'` -- format as integers (whole numbers)
+- `cmap='Blues'` -- blue color scheme. `'Greens'` was used for the ANN one
 
 ---
 
@@ -590,7 +590,7 @@ at the start of training, weights are initialized randomly (usually small random
 
 ### Sequential model
 
-means layers are stacked linearly — output of one layer is input of the next. thats the simplest architecture.
+means layers are stacked linearly -- output of one layer is input of the next. thats the simplest architecture.
 
 ```python
 model = Sequential()
@@ -612,11 +612,11 @@ model.add(Dense(32, activation='relu'))                       # second hidden la
 model.add(Dense(1, activation='sigmoid'))                     # output layer, 1 neuron
 ```
 
-`input_shape=(13,)` — only needed on the first layer. tells the network there are 13 input features.
+`input_shape=(13,)` -- only needed on the first layer. tells the network there are 13 input features.
 
 ### activation functions
 
-an activation function decides whether a neuron should "fire" or not. without it, the network is just doing linear math (stacking linear transformations) and cant learn complex patterns. this is called the **linearity problem** — no matter how many layers, without activation functions its all equivalent to a single linear layer.
+an activation function decides whether a neuron should "fire" or not. without it, the network is just doing linear math (stacking linear transformations) and cant learn complex patterns. this is called the **linearity problem** -- no matter how many layers, without activation functions its all equivalent to a single linear layer.
 
 **ReLU (Rectified Linear Unit):**
 $$f(x) = \max(0, x)$$
@@ -633,7 +633,7 @@ squishes any number into range (0, 1). used in the output layer for binary class
 
 ### Dropout
 
-a **regularization technique** to prevent overfitting. during training, it randomly "turns off" a percentage of neurons in that layer. this forces the network to not rely on any single neuron too much — the knowledge gets distributed.
+a **regularization technique** to prevent overfitting. during training, it randomly "turns off" a percentage of neurons in that layer. this forces the network to not rely on any single neuron too much -- the knowledge gets distributed.
 
 `Dropout(0.3)` = randomly ignore 30% of neurons in the previous layer during each training step. during prediction (testing), all neurons are used (but outputs are scaled down to compensate).
 
@@ -643,7 +643,7 @@ model.add(Dropout(0.3))
 
 ### compiling the model
 
-before training, the model needs to be compiled — basically configuring how it learns.
+before training, the model needs to be compiled -- basically configuring how it learns.
 
 ```python
 model.compile(
@@ -682,7 +682,7 @@ why log? because probabilities are between 0 and 1, and multiplying small probab
 
 ### `model.summary()`
 
-prints out the architecture — how many layers, how many parameters (weights + biases) each layer has. useful to see the size of the model.
+prints out the architecture -- how many layers, how many parameters (weights + biases) each layer has. useful to see the size of the model.
 
 ```python
 model.summary()
@@ -714,7 +714,7 @@ history = model.fit(
 **validation_split = 0.2**
 - takes 20% of the training data and uses it as a validation set
 - the model trains on the remaining 80% and after each epoch checks performance on the validation 20%
-- this lets the training progress be monitored — if train loss goes down but val loss goes up, thats overfitting
+- this lets the training progress be monitored -- if train loss goes down but val loss goes up, thats overfitting
 
 **history**
 - the `.fit()` function returns a history object that stores the loss and accuracy for each epoch
@@ -728,7 +728,7 @@ plotting how the loss changes over epochs. ideally both should go down together.
 - if **both are high** → **underfitting** (model is too simple or needs more training)
 - if **both go down and converge** → good (thats the goal)
 
-**convergence** = when the loss stops changing significantly between epochs. the model has "settled" — more training wont help much. if the losses are still dropping at epoch 50, more epochs might be beneficial.
+**convergence** = when the loss stops changing significantly between epochs. the model has "settled" -- more training wont help much. if the losses are still dropping at epoch 50, more epochs might be beneficial.
 
 ```python
 plt.plot(history.history['loss'], label='train loss')
@@ -750,7 +750,7 @@ y_pred_ann = (y_pred_ann_proba > 0.5).astype(int)    # if prob > 0.5 → 1, else
 ```
 
 - `.predict()` gives probabilities (like 0.73 or 0.21)
-- `.flatten()` — the output is shape (61, 1) but (61,) is needed so its easier to work with
+- `.flatten()` -- the output is shape (61, 1) but (61,) is needed so its easier to work with
 - `> 0.5` gives True/False, `.astype(int)` converts to 1/0
 
 ### threshold (the 0.5 cutoff)
@@ -759,7 +759,7 @@ the **threshold** is the cutoff probability for classification. default is 0.5:
 - probability ≥ 0.5 → predict class 1 (disease)
 - probability < 0.5 → predict class 0 (no disease)
 
-but 0.5 isnt always the best choice. in medical diagnosis, maybe the threshold should be 0.3 — better to flag more people and get some false positives than to miss someone who actually has heart disease. lowering the threshold increases recall but decreases precision (the precision-recall tradeoff thing from earlier).
+but 0.5 isnt always the best choice. in medical diagnosis, maybe the threshold should be 0.3 -- better to flag more people and get some false positives than to miss someone who actually has heart disease. lowering the threshold increases recall but decreases precision (the precision-recall tradeoff thing from earlier).
 
 ---
 
@@ -826,13 +826,13 @@ this comes up everywhere so heres a proper explanation
 - like not studying at all
 - **fixes**: more complex model, more features, train longer, remove too much regularization
 
-the sweet spot is in between — model learns the actual patterns without memorizing noise. this is called the **bias-variance tradeoff**:
+the sweet spot is in between -- model learns the actual patterns without memorizing noise. this is called the **bias-variance tradeoff**:
 - **high bias** = underfitting (model makes too many assumptions, oversimplifies)
 - **high variance** = overfitting (model is too sensitive to training data, every little fluctuation changes predictions)
 
 ### early stopping (not used in this notebook but worth knowing)
 
-a technique to stop training when the validation loss stops improving. instead of running for a fixed number of epochs, training stops early when the model starts overfitting. keras has a callback for this: `EarlyStopping(monitor='val_loss', patience=5)` — stops if val_loss doesnt improve for 5 epochs.
+a technique to stop training when the validation loss stops improving. instead of running for a fixed number of epochs, training stops early when the model starts overfitting. keras has a callback for this: `EarlyStopping(monitor='val_loss', patience=5)` -- stops if val_loss doesnt improve for 5 epochs.
 
 ---
 
@@ -857,7 +857,7 @@ where $\alpha$ is the **learning rate** (how big each step is) and $\frac{\parti
 
 - learning rate too big → overshoots the minimum, bounces around, might diverge
 - learning rate too small → takes forever to converge, might get stuck in local minima
-- adam optimizer handles this automatically by adapting the learning rate for each parameter — thats why its nice
+- adam optimizer handles this automatically by adapting the learning rate for each parameter -- thats why its nice
 
 ### backpropagation
 
@@ -868,10 +868,10 @@ the chain rule says: if $f(g(x))$ is a composition of functions, then $\frac{df}
 in a neural network, each layer is like a nested function. backpropagation applies the chain rule layer by layer, from the output back to the input, to figure out how much each weight contributed to the error. then gradient descent uses those gradients to update the weights.
 
 so the training loop is:
-1. **forward pass** — data goes through the network, predictions come out
-2. **compute loss** — compare predictions to actual labels
-3. **backward pass (backpropagation)** — calculate gradients for every weight
-4. **update weights** — gradient descent adjusts weights to reduce loss
+1. **forward pass** -- data goes through the network, predictions come out
+2. **compute loss** -- compare predictions to actual labels
+3. **backward pass (backpropagation)** -- calculate gradients for every weight
+4. **update weights** -- gradient descent adjusts weights to reduce loss
 5. repeat for each batch in each epoch
 
 ---
@@ -892,9 +892,9 @@ a seed that makes "random" operations reproducible. using the same seed gives th
 
 ### `.fit()` vs `.transform()` vs `.fit_transform()`
 
-- **`.fit(data)`** — learn the parameters from data (like calculating mean and std)
-- **`.transform(data)`** — apply those learned parameters to data
-- **`.fit_transform(data)`** — does both in one step (learn + apply)
+- **`.fit(data)`** -- learn the parameters from data (like calculating mean and std)
+- **`.transform(data)`** -- apply those learned parameters to data
+- **`.fit_transform(data)`** -- does both in one step (learn + apply)
 
 rule: `fit_transform` on training data, only `transform` on test data. NEVER fit on test data.
 
@@ -930,7 +930,7 @@ vs **regression** = predicting a continuous number (like predicting house price)
 
 ## 14. comparing models
 
-a DataFrame with all the metrics for both models side by side. thats the proper way to compare — dont just look at accuracy, compare everything.
+a DataFrame with all the metrics for both models side by side. thats the proper way to compare -- dont just look at accuracy, compare everything.
 
 ```python
 results = pd.DataFrame({
@@ -948,7 +948,7 @@ results = pd.DataFrame({
 - dataset is tiny (302 rows). neural networks need a LOT of data to shine. with small data they often overfit or just cant learn anything useful beyond what a simpler model already captures
 - logistic regression is the go-to baseline for binary classification. its simple, interpretable, and works surprisingly well on small/medium datasets
 - ANNs are better when theres complex non-linear patterns and lots of data
-- this is actually a version of **Occam's Razor** — simpler models are preferred when they perform just as well as complex ones
+- this is actually a version of **Occam's Razor** -- simpler models are preferred when they perform just as well as complex ones
 
 ---
 
